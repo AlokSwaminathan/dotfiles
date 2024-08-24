@@ -1,0 +1,52 @@
+icons_format = "{icon}"
+
+[theme]
+theme = "solarized-dark"
+[theme.overrides]
+idle_bg = "#123456"
+idle_fg = "#abcdef"
+
+[icons]
+icons = "awesome6"
+[icons.overrides]
+bat = ["|E|", "|_|", "|=|", "|F|"]
+bat_charging = "|^| "
+
+[[block]]
+block = "cpu"
+
+[[block]]
+block = "memory"
+format_alt = " $icon_swap $swap_used.eng(prefix:Mi)/$swap_total.eng(prefix:Mi)($swap_used_percents.eng(w:2)) "
+
+[[block]]
+block = "battery"
+format = " $percentage - $time "
+full_threshold = 101
+
+[[block]]
+block = "net"
+format = " $icon $ssid "
+
+
+[[block]]
+block = "sound"
+
+[[block]]
+block = "backlight"
+
+# [[block]]
+# block = "sound"
+# driver = "alsa"
+# device_kind = "source"
+
+
+[[block]]
+block = "time"
+interval = 5
+timezone = "America/Detroit"
+format = " $timestamp.datetime(f:'%a %m/%d %I:%M %p') "
+
+[[block]]
+block = "uptime"
+interval = 60
