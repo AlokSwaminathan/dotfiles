@@ -12,6 +12,9 @@ vim.g.have_nerd_font = false
 -- NOTE: You can change these options as you wish!
 --  For more options, you can see `:help option-list`
 
+-- No tabs
+vim.opt.expandtab = true
+
 -- Make line numbers default
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -539,6 +542,14 @@ require("lazy").setup({
 							completion = {
 								callSnippet = "Replace",
 							},
+							diagnostics = {
+								globals = {
+									"vim",
+								},
+							},
+							workspace = {
+								library = vim.api.nvim_get_runtime_file("", true),
+							},
 							-- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
 							-- diagnostics = { disable = { 'missing-fields' } },
 						},
@@ -605,6 +616,12 @@ require("lazy").setup({
 			end,
 			formatters_by_ft = {
 				lua = { "stylua" },
+				rust = { "rustfmt" },
+				python = { "isort", "black" },
+				javascript = { "prettier" },
+				typescript = { "prettier" },
+				c = { "clang-format" },
+				cpp = { "clang-format" },
 				-- Conform can also run multiple formatters sequentially
 				-- python = { "isort", "black" },
 				--
@@ -618,7 +635,6 @@ require("lazy").setup({
 		"hrsh7th/nvim-cmp",
 		event = "InsertEnter",
 		dependencies = {
-			-- Snippet Engine & its associated nvim-cmp source
 			{
 				"L3MON4D3/LuaSnip",
 				build = (function()
@@ -671,6 +687,7 @@ require("lazy").setup({
 				mapping = cmp.mapping.preset.insert({
 					-- Select the [n]ext item
 					["<C-n>"] = cmp.mapping.select_next_item(),
+
 					-- Select the [p]revious item
 					["<C-p>"] = cmp.mapping.select_prev_item(),
 
@@ -685,9 +702,9 @@ require("lazy").setup({
 
 					-- If you prefer more traditional completion keymaps,
 					-- you can uncomment the following lines
-					--['<CR>'] = cmp.mapping.confirm { select = true },
-					--['<Tab>'] = cmp.mapping.select_next_item(),
-					--['<S-Tab>'] = cmp.mapping.select_prev_item(),
+					["<CR>"] = cmp.mapping.confirm({ select = true }),
+					["<Tab>"] = cmp.mapping.select_next_item(),
+					["<S-Tab>"] = cmp.mapping.select_prev_item(),
 
 					-- Manually trigger a completion from nvim-cmp.
 					--  Generally you don't need this, because nvim-cmp will display
