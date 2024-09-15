@@ -87,6 +87,9 @@ bindsym $mod+c exec dunstctl context
 bindsym $mod+p exec dunstctl history-pop
 bindsym $mod+Shift+Ctrl+d exec bash ~/.config/sway/pause-notifs.sh
 
+bindsym $mod+t exec bash ~/.config/sway/connect-tailscale.sh
+bindsym $mod+Shift+t exec bash ~/.config/sway/disconnect-tailscale.sh
+
 ### Key bindings
 #
 # Basics:

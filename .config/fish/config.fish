@@ -12,6 +12,11 @@ if status is-interactive
     
     alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
     alias lgd="lazygit --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
+
+    alias cp-kernel="sudo cp arch/x86/boot/bzImage /boot/compiled_linux/; sudo mkinitcpio -k /boot/compiled_linux/bzImage -c /etc/mkinitcpio.conf -g /boot/compiled_linux/initramfs.img -p /etc/mkinitcpio.compiled_kernel.d/compiled_kernel.preset"
+
+    alias ssh="TERM=xterm-256color /usr/bin/ssh"
+
 end
 
 set -x XDG_CONFIG_HOME "/home/aswaminathan/.config/"
