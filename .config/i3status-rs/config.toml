@@ -11,6 +11,7 @@ icons = "awesome6"
 [icons.overrides]
 bat = ["|E|", "|_|", "|=|", "|F|"]
 bat_charging = "|^| "
+server = "\uf233"
 
 [[block]]
 block = "cpu"
@@ -28,6 +29,12 @@ full_threshold = 101
 block = "net"
 format = " $icon $ssid "
 
+[[block]]
+block = "custom"
+command = "bash ~/.config/i3status-rs/tailscale-status.sh"
+json = true
+signal = 4
+interval = 30
 
 [[block]]
 block = "sound"
