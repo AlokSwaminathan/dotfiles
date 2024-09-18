@@ -36,6 +36,29 @@ M = {
     --    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
     --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
   },
+  {
+    "nvim-treesitter/nvim-treesitter-context",
+    enabled = false,
+  },
+  {
+    "SmiteshP/nvim-navic",
+    dependencies = {
+      "neovim/nvim-lspconfig",
+    },
+    opts = {
+      depth_limit = 10,
+    },
+  },
+  {
+    "SmiteshP/nvim-navbuddy",
+    dependencies = {
+      "neovim/nvim-lspconfig",
+      "SmiteshP/nvim-navic",
+      "MunifTanjim/nui.nvim",
+      "numToStr/Comment.nvim",
+      "nvim-telescope/telescope.nvim",
+    },
+  },
 }
 
 return M
