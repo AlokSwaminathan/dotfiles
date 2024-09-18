@@ -17,9 +17,11 @@ if status is-interactive
 
     alias ssh="TERM=xterm-256color /usr/bin/ssh"
 
+    zoxide init fish | source
 end
 
 set -x XDG_CONFIG_HOME "/home/aswaminathan/.config/"
+set -x VISUAL "/usr/bin/nvim"
 fish_vi_key_bindings
 
 
