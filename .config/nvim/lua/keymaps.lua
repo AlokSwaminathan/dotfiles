@@ -81,3 +81,5 @@ vim.keymap.set("n", "<leader>rs", function()
 end, { noremap = true, silent = true, desc = "Save value from OS Clipboard to the specified register" })
 
 vim.keymap.set("n", "<leader>nc", "<CMD>Telescope neoclip<CR>", { desc = "Look through nvim clipboard" })
+
+vim.keymap.set({ "n", "v", "i" }, "<C-s>", "<CMD>w<CR>", { desc = "Save file" })
