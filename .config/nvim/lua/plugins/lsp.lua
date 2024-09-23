@@ -65,6 +65,8 @@ M = {
             vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
           end
 
+          vim.lsp.inlay_hint.enable(true)
+
           -- Jump to the definition of the word under your cursor.
           --  This is where a variable was first declared, or where a function is defined, etc.
           --  To jump back, press <C-t>.
@@ -181,8 +183,6 @@ M = {
         --
         -- But for many setups, the LSP (`tsserver`) will work just fine
         -- tsserver = {},
-        --
-
         lua_ls = {
           -- cmd = {...},
           -- filetypes = { ...},
@@ -226,6 +226,10 @@ M = {
       require("mason-lspconfig").setup({
         handlers = {
           function(server_name)
+            -- Rustaceanvim does this so don't setup for rust analyzer
+            if server_name == "rust_analyzer" then
+              return
+            end
             local server = servers[server_name] or {}
             -- This handles overriding only values explicitly passed
             -- by the server configuration above. Useful when disabling
