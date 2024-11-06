@@ -1,7 +1,7 @@
 # My Dotfiles
 
 ## Components
-**nvim/**    My main editor, but hopefully, it'll become usable soon. I just use lazyvim while I'm building it
+**nvim/**    My main editor, need to set up DAP
 
 **sway/**    WM config. On top of the config file, has scripts for notifications, screenshots, and png for my lock screen
 
