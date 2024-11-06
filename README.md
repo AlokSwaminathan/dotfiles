@@ -1,7 +1,7 @@
 # My Dotfiles
 
 ## Components
-**nvim/**    My main editor (one day). rn it is basically just the Kickstarter config, but hopefully, it'll become usable soon. I just use lazyvim while I'm building it
+**nvim/**    My main editor, but hopefully, it'll become usable soon. I just use lazyvim while I'm building it
 
 **sway/**    WM config. On top of the config file, has scripts for notifications, screenshots, and png for my lock screen
 
@@ -19,4 +19,4 @@
 
 
 ### Missing
-tmux (or zellij maybe), some sort of clipboard manager
+tmux (or zellij maybe)
