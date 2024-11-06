@@ -28,7 +28,7 @@ set $menu rofi -show combi -modes combi -combi-modes "window,drun" -display-comb
 
 set $clipmenu rofi -modi clipboard:~/.config/sway/cliphist-rofi-img.sh -show clipboard -show-icons
 
-default_border pixel 2
+default_border pixel 4
 
 exec wl-paste --type text --watch cliphist store
 exec wl-paste --type image --watch cliphist store
@@ -65,7 +65,6 @@ exec ~/.config/sway/sway-started.sh
 
 input "1739:52544:SYNA7DAB:01_06CB:CD40_Touchpad" {
     natural_scroll enabled
-    tap enabled
 }
 
 ### My bindings
