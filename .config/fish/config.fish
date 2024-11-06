@@ -17,6 +17,8 @@ if status is-interactive
 
     alias ssh="TERM=xterm-256color /usr/bin/ssh"
 
+    alias lc="leetcode"
+
     zoxide init fish | source
 end
 
