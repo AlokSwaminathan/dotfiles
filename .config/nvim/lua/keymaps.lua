@@ -42,7 +42,7 @@ vim.keymap.set("n", "<leader>y", function()
     return
   end
 
-  vim.system({ "wl-copy", content }, { text = true }):wait()
+  vim.fn.setreg("+", content)
 
   print('Copied from register "' .. reg .. '" to OS clipboard')
 end, { noremap = true, silent = true, desc = "Copy from register to OS clipboard" })
