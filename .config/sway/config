@@ -26,7 +26,7 @@ set $browser firefox
 #set $menu tofi-drun --hint-font false --ascii-input true | xargs swaymsg exec --
 set $menu rofi -show combi -modes combi -combi-modes "window,drun" -display-combi Run | xargs swaymsg exec --
 
-set $clipmenu rofi -modi clipboard:~/.config/sway/cliphist-rofi-img.sh -show clipboard -show-icons
+set $clipmenu rofi -modi clipboard:~/.config/sway/scripts/cliphist-rofi-img.sh -show clipboard -show-icons
 
 default_border pixel 4
 
@@ -34,20 +34,27 @@ exec wl-paste --type text --watch cliphist store
 exec wl-paste --type image --watch cliphist store
 exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
 
+# Set wallpaper
+output "*" bg ~/.config/sway/wallpapers/samurai.jpg fill
+
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
 ### Idle configuration
 #
 # Example configuration:
 #
-set $swaylock "swaylock -i $HOME/.config/sway/swaylock.png -f"
-exec swayidle -w timeout 300 $swaylock timeout 600 'swaymsg "output * disable"' resume 'swaymsg "output * enable"' before-sleep $swaylock
+set $swaylock "swaylock -i $HOME/.config/sway/wallpapers/swaylock.png -f"
+
+# exec swayidle -w timeout 300 $swaylock timeout 600 'swaymsg "output * disable"' resume 'swaymsg "output * enable"' before-sleep $swaylock
+
+# Enable this and comment the line above if you want to disable sleep for any reason
+exec swayidle -w before-sleep $swaylock
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
 
-exec ~/.config/sway/sway-started.sh
+exec ~/.config/sway/scripts/sway-started.sh
 
 ### Input configuration
 #
@@ -75,22 +82,22 @@ bindsym XF86AudioRaiseVolume exec amixer -q sset 'Master' 5%+
 bindsym XF86AudioLowerVolume exec amixer -q sset 'Master' 5%-
 
 # For some reason inline commands don't work, so instead using a path to executables
-bindsym Print exec bash ~/.config/sway/fullscreen-ss.sh
-bindsym $mod+Print exec bash ~/.config/sway/selection-ss.sh
-bindsym Shift+Print exec bash ~/.config/sway/focused-win-ss.sh
+bindsym Print exec bash ~/.config/sway/scripts/fullscreen-ss.sh
+bindsym $mod+Print exec bash ~/.config/sway/scripts/selection-ss.sh
+bindsym Shift+Print exec bash ~/.config/sway/scripts/focused-win-ss.sh
 
-bindsym Ctrl+Print exec bash ~/.config/sway/fullscreen-ss.sh copy
-bindsym Ctrl+$mod+Print exec bash ~/.config/sway/selection-ss.sh copy
-bindsym Ctrl+Shift+Print exec bash ~/.config/sway/focused-win-ss.sh copy
+bindsym Ctrl+Print exec bash ~/.config/sway/scripts/fullscreen-ss.sh copy
+bindsym Ctrl+$mod+Print exec bash ~/.config/sway/scripts/selection-ss.sh copy
+bindsym Ctrl+Shift+Print exec bash ~/.config/sway/scripts/focused-win-ss.sh copy
 
 bindsym $mod+Escape exec dunstctl close
 bindsym $mod+Shift+Escape exec dunstctl close-all
 bindsym $mod+c exec dunstctl context
 bindsym $mod+p exec dunstctl history-pop
-bindsym $mod+Shift+Ctrl+d exec bash ~/.config/sway/pause-notifs.sh
+bindsym $mod+Shift+Ctrl+d exec bash ~/.config/sway/scripts/pause-notifs.sh
 
-bindsym $mod+t exec bash ~/.config/sway/connect-tailscale.sh
-bindsym $mod+Shift+t exec bash ~/.config/sway/disconnect-tailscale.sh
+bindsym $mod+t exec bash ~/.config/sway/scripts/connect-tailscale.sh
+bindsym $mod+Shift+t exec bash ~/.config/sway/scripts/disconnect-tailscale.sh
 
 bindsym $mod+v exec $clipmenu
 
