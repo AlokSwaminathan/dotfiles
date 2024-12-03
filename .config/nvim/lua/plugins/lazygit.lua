@@ -4,6 +4,10 @@ M = {
     dependencies = {
       "nvim-lua/plenary.nvim",
     },
+    -- stylua: ignore
+    keys = {
+      {"<leader>lg", "<cmd>LazyGit<cr>", desc = "Open lazygit in current working directory" }
+    },
   },
 }
 
