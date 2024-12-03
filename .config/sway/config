@@ -266,4 +266,8 @@ bar {
     }
 }
 
+# Gaps
+gaps inner 5
+gaps outer 5
+
 include @sysconfdir@/sway/config.d/*
