@@ -58,6 +58,10 @@ M = {
       "numToStr/Comment.nvim",
       "nvim-telescope/telescope.nvim",
     },
+    -- stylua: ignore
+    keys = {
+      { "+", mode = "n", function() require("nvim-navbuddy").open() end, desc = "Navigate on lsp symbols" }
+    },
   },
 }
 

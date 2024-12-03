@@ -14,6 +14,10 @@ M = {
     -- Optional dependencies
     dependencies = { { "echasnovski/mini.icons", opts = {} } },
     -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
+    -- stylua: ignore
+    keys = {
+      { "-", mode = "n", function() require("oil").open_float() end, desc = "Open parent dir in oil" }
+    },
   },
 }
 

@@ -20,19 +20,6 @@ vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower win
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
 -- Custom keymaps
-vim.keymap.set("n", "-", "<CMD>Oil --float<CR>", { desc = "Open parent dir in oil" })
-
-vim.keymap.set("n", "+", "<CMD>Navbuddy<CR>", { desc = "Navigate on lsp symbols" })
-
-vim.keymap.set("n", "z", "<Plug>(leap)")
-vim.keymap.set("n", "Z", "<Plug>(leap-from-window)")
-vim.keymap.set({ "x", "o" }, "z", "<Plug>(leap-forward)")
-vim.keymap.set({ "x", "o" }, "Z", "<Plug>(leap-backward)")
-
-vim.api.nvim_create_user_command("ClearClip", function()
-  require("neoclip").clear_history()
-end, { desc = "Clear neoclip history" })
-
 vim.keymap.set("n", "<leader>y", function()
   local reg = vim.v.register or '"'
 
@@ -69,17 +56,9 @@ end, { noremap = true, silent = true, desc = "Paste from OS Clip" })
 
 vim.keymap.set("n", "<leader>rs", function()
   local reg = vim.v.register or '"'
-
-  local res = vim.system({ "wl-paste" }, { text = true }):wait()
-
-  if res and res.stdout ~= "" then
-    local clipboard = res.stdout:gsub("\0", ""):gsub("\n\n$", "")
-    vim.fn.setreg(reg, clipboard)
-  else
-    print("OS Clipboard is empty or there was an error with wl-paste")
-  end
+  local clipboard = vim.fn.getreg("+")
+  vim.fn.setreg(reg, clipboard)
 end, { noremap = true, silent = true, desc = "Save value from OS Clipboard to the specified register" })
 
-vim.keymap.set("n", "<leader>nc", "<CMD>Telescope neoclip<CR>", { desc = "Look through nvim clipboard" })
-
 vim.keymap.set({ "n", "v", "i" }, "<C-s>", "<CMD>w<CR>", { desc = "Save file" })
+vim.keymap.set({ "n", "v" }, "<leader>q", "<Cmd>q<CR>", { desc = "Close view" })

@@ -152,6 +152,11 @@ M = {
           if client then
             require("nvim-navbuddy").attach(client, event.buf)
           end
+
+          -- Set up function lsp signatures
+          if client then
+            require("lsp_signature").on_attach({}, event.buf)
+          end
         end,
       })
 
@@ -239,6 +244,14 @@ M = {
           end,
         },
       })
+    end,
+  },
+  {
+    "ray-x/lsp_signature.nvim",
+    event = "VeryLazy",
+    opts = {},
+    config = function(_, opts)
+      require("lsp_signature").setup(opts)
     end,
   },
 }
