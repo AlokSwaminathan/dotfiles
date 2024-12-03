@@ -18,6 +18,19 @@ M = {
     init = function()
       vim.cmd.colorscheme("gruvbox")
     end,
+    enabled = false,
+  },
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    priority = 1000,
+    opts = {
+      flavour = "mocha",
+      transparent_background = true,
+    },
+    init = function()
+      vim.cmd.colorscheme("catppuccin")
+    end,
   },
 }
 
