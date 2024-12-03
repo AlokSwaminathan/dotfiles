@@ -35,7 +35,7 @@ exec wl-paste --type image --watch cliphist store
 exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
 
 # Set wallpaper
-output "*" bg ~/.config/sway/wallpapers/samurai.jpg fill
+output "*" bg ~/.config/sway/wallpapers/blurred_samurai.jpg fill
 
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
