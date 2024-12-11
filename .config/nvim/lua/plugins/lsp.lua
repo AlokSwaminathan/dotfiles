@@ -232,7 +232,7 @@ M = {
         handlers = {
           function(server_name)
             -- Rustaceanvim does this so don't setup for rust analyzer
-            if server_name == "rust_analyzer" then
+            if server_name == "rust_analyzer" or server_name == "ts_ls" then
               return
             end
             local server = servers[server_name] or {}
