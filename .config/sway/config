@@ -28,7 +28,7 @@ set $menu rofi -show combi -modes combi -combi-modes "window,drun" -display-comb
 
 set $clipmenu rofi -modi clipboard:~/.config/sway/scripts/cliphist-rofi-img.sh -show clipboard -show-icons
 
-default_border pixel 4
+default_border pixel 2
 
 exec wl-paste --type text --watch cliphist store
 exec wl-paste --type image --watch cliphist store
@@ -245,6 +245,7 @@ bindsym $mod+r mode "resize"
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
+
 bar {
     font pango: Iosevka Nerd Font Mono, Font Awesome 6 Free
     position top
@@ -266,8 +267,11 @@ bar {
     }
 }
 
+# bar swaybar_command waybar
+
 # Gaps
 gaps inner 5
 gaps outer 5
 
 include @sysconfdir@/sway/config.d/*
+include ~/.config/sway/colors/catppuccin_mocha
