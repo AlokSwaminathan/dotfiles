@@ -20,6 +20,8 @@ if status is-interactive
     alias lc="leetcode"
 
     zoxide init fish | source
+
+    alias cd="z" 
 end
 
 set -x XDG_CONFIG_HOME "/home/aswaminathan/.config/"
