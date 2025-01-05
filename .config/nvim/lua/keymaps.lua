@@ -34,25 +34,8 @@ vim.keymap.set("n", "<leader>y", function()
   print('Copied from register "' .. reg .. '" to OS clipboard')
 end, { noremap = true, silent = true, desc = "Copy from register to OS clipboard" })
 
-local function paste_from_os_clip(before_cursor)
-  local res = vim.system({ "wl-paste" }, { text = true }):wait()
-
-  if res and res.stdout ~= "" then
-    local clipboard = res.stdout:gsub("\0", ""):gsub("\n\n$", "")
-    local clipboard_split = vim.split(clipboard, "\n")
-    vim.api.nvim_put(clipboard_split, "c", not before_cursor, true)
-  else
-    print("OS Clipboard is empty or there was an error with wl-paste")
-  end
-end
-
-vim.keymap.set("n", "<leader>p", function()
-  paste_from_os_clip(false)
-end, { noremap = true, silent = true, desc = "Paste from OS Clip" })
-
-vim.keymap.set("n", "<leader>P", function()
-  paste_from_os_clip(true)
-end, { noremap = true, silent = true, desc = "Paste from OS Clip" })
+vim.keymap.set({ "n", "v" }, "<leader>p", '"+p', { noremap = true, silent = true, desc = "Paste from OS Clip" })
+vim.keymap.set({ "n", "v" }, "<leader>P", '"+P', { noremap = true, silent = true, desc = "Paste from OS Clip" })
 
 vim.keymap.set("n", "<leader>rs", function()
   local reg = vim.v.register or '"'
