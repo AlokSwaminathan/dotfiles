@@ -16,12 +16,7 @@ set $up k
 set $right l
 # Your preferred terminal emulator
 set $term foot
-set $font "Iosevka Nerd Font Mono"
 set $browser firefox
-# Your preferred application launcher
-# Note: pass the final command to swaymsg so that the resulting window can be opened
-# on the original workspace that the command was run on.
-#set $menu dmenu_path | wmenu | xargs swaymsg exec --
 
 #set $menu tofi-drun --hint-font false --ascii-input true | xargs swaymsg exec --
 set $menu rofi -show combi -modes combi -combi-modes "window,drun" -display-combi Run | xargs swaymsg exec --
@@ -81,7 +76,7 @@ bindsym XF86AudioMute exec amixer -q sset 'Master' toggle
 bindsym XF86AudioRaiseVolume exec amixer -q sset 'Master' 5%+
 bindsym XF86AudioLowerVolume exec amixer -q sset 'Master' 5%-
 
-# For some reason inline commands don't work, so instead using a path to executables
+# Screenshot binds
 bindsym Print exec bash ~/.config/sway/scripts/fullscreen-ss.sh
 bindsym $mod+Print exec bash ~/.config/sway/scripts/selection-ss.sh
 bindsym Shift+Print exec bash ~/.config/sway/scripts/focused-win-ss.sh
@@ -90,16 +85,24 @@ bindsym Ctrl+Print exec bash ~/.config/sway/scripts/fullscreen-ss.sh copy
 bindsym Ctrl+$mod+Print exec bash ~/.config/sway/scripts/selection-ss.sh copy
 bindsym Ctrl+Shift+Print exec bash ~/.config/sway/scripts/focused-win-ss.sh copy
 
+# Notification binds
 bindsym $mod+Escape exec dunstctl close
 bindsym $mod+Shift+Escape exec dunstctl close-all
 bindsym $mod+c exec dunstctl context
 bindsym $mod+p exec dunstctl history-pop
 bindsym $mod+Shift+Ctrl+d exec bash ~/.config/sway/scripts/pause-notifs.sh
 
+# Tailscale binds
 bindsym $mod+t exec bash ~/.config/sway/scripts/connect-tailscale.sh
 bindsym $mod+Shift+t exec bash ~/.config/sway/scripts/disconnect-tailscale.sh
 
+# Clipboard binds
 bindsym $mod+v exec $clipmenu
+
+# Screen recording bings
+bindsym $mod+Shift+Ctrl+s+r exec bash ~/.config/sway/scripts/wf-record.sh
+bindsym $mod+Shift+Ctrl+s+t exec bash ~/.config/sway/scripts/wf-stop.sh
+
 
 ### Key bindings
 #
@@ -272,6 +275,7 @@ bar {
 # Gaps
 gaps inner 5
 gaps outer 5
+
 
 include @sysconfdir@/sway/config.d/*
 include ~/.config/sway/colors/catppuccin_mocha
