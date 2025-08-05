@@ -25,8 +25,8 @@ M = {
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
       { "j-hui/fidget.nvim", opts = {} },
 
-      -- Allows extra capabilities provided by nvim-cmp
-      "hrsh7th/cmp-nvim-lsp",
+      -- Allows extra capabilities provided by blink
+      "saghen/blink.cmp",
     },
     config = function()
       -- Brief aside: **What is LSP?**
@@ -143,29 +143,23 @@ M = {
             end, "[T]oggle Inlay [H]ints")
           end
 
-          -- Set up navic context menu
+          -- Set up navic context menu and navbuddy
           if client and client.server_capabilities.documentSymbolProvider then
             require("nvim-navic").attach(client, event.buf)
-          end
-
-          -- Set up navbuddy
-          if client then
             require("nvim-navbuddy").attach(client, event.buf)
           end
 
-          -- Set up function lsp signatures
-          if client then
-            require("lsp_signature").on_attach({}, event.buf)
-          end
+          -- -- Set up function lsp signatures
+          -- if client then
+          --   require("lsp_signature").on_attach({}, event.buf)
+          -- end
         end,
       })
 
       -- LSP servers and clients are able to communicate to each other what features they support.
       --  By default, Neovim doesn't support everything that is in the LSP specification.
-      --  When you add nvim-cmp, luasnip, etc. Neovim now has *more* capabilities.
-      --  So, we create new capabilities with nvim cmp, and then broadcast that to the servers.
-      local capabilities = vim.lsp.protocol.make_client_capabilities()
-      capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
+      --  Add blink capabilities
+      local capabilities = require("blink.cmp").get_lsp_capabilities()
 
       -- Enable the following language servers
       --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
@@ -248,11 +242,10 @@ M = {
   },
   {
     "ray-x/lsp_signature.nvim",
-    event = "VeryLazy",
-    opts = {},
-    config = function(_, opts)
-      require("lsp_signature").setup(opts)
-    end,
+    event = "InsertEnter",
+    opts = {
+      -- cfg options
+    },
   },
   {
     "folke/trouble.nvim",

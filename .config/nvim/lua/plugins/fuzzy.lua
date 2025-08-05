@@ -78,6 +78,7 @@ M = {
       vim.keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "[S]earch by [G]rep" })
       vim.keymap.set("n", "<leader>sd", function()
         builtin.diagnostics({
+          bufnr = 0,
           wrap_results = true,
           line_width = "full",
           severity_bound = 0,
