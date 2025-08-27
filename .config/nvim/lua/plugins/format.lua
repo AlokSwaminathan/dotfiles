@@ -41,6 +41,11 @@ M = {
         -- You can use 'stop_after_first' to run the first available formatter from the list
         -- javascript = { "prettierd", "prettier", stop_after_first = true },
       },
+      formatters = {
+        clang_format = {
+          command = "~/.local/share/nvim/mason/bin/clang-format -style=llvm",
+        },
+      },
     },
   },
 }
