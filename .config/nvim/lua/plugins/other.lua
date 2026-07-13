@@ -1,5 +1,10 @@
 M = {
-  "nmac427/guess-indent.nvim", -- Detect tabstop and shiftwidth automatically
+  {
+    "nmac427/guess-indent.nvim",
+    config = function()
+      require("guess-indent").setup({})
+    end,
+  }, -- Detect tabstop and shiftwidth automatically
   -- Highlight todo, notes, etc in comments
   {
     "folke/todo-comments.nvim",
@@ -30,7 +35,6 @@ M = {
       -- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
       -- - sd'   - [S]urround [D]elete [']quotes
       -- - sr)'  - [S]urround [R]eplace [)] [']
-      require("mini.surround").setup()
     end,
   },
 }

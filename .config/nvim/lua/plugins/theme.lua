@@ -24,13 +24,23 @@ M = {
     "catppuccin/nvim",
     name = "catppuccin",
     priority = 1000,
+    config = function(_, opts)
+      require("catppuccin").setup(opts)
+      vim.cmd.colorscheme("catppuccin")
+    end,
     opts = {
       flavour = "mocha",
       transparent_background = true,
+      highlight_overrides = {
+        all = function(colors)
+          return {
+            Normal = { bg = colors.none },
+            NormalNC = { bg = colors.none },
+            NormalFloat = { bg = colors.none },
+          }
+        end,
+      },
     },
-    init = function()
-      vim.cmd.colorscheme("catppuccin")
-    end,
   },
 }
 
