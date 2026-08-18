@@ -1,6 +1,8 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
 SETUVAR --export --path CMAKE_PREFIX_PATH:/opt/homebrew/
+SETUVAR --export EDITOR:nvim
+SETUVAR --export GIT_EDITOR:nvim
 SETUVAR MOZ_ENABLE_WAYLAND:1
 SETUVAR --export PDFium_DIR:/opt/homebrew/opt/pdfium/
 SETUVAR __fish_initialized:3400
